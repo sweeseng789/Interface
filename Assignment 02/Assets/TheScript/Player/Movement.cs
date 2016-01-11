@@ -2,80 +2,101 @@
 
 public class Movement : MonoBehaviour
 {
+    enum LASTMOVE
+    {
+        e_UP,
+        e_DOWN,
+        e_LEFT,
+        e_RIGHT
+    }
+
+
     Animator player;
-    int lastKey;
+    LASTMOVE lastMove;
     float movementSpeed;
+    public VirtualJoystick joystick;
 
     // Use this for initialization
     void Start()
     {
         player = GetComponent<Animator>();
-        lastKey = (int)(KeyCode.DownArrow);
         movementSpeed = 0.0f;
+        joystick = GameObject.Find("Joystick Background").GetComponent<VirtualJoystick>();
+        lastMove = LASTMOVE.e_DOWN;
     }
 
     // Update is called once per frame
     void Update()
     {
+        float inputX = joystick.Horizontal();
+        float inputY = joystick.Vertical();
         movementSpeed = 2.0f * Time.deltaTime;
 
-        //Check whether the user is pressing any key
-        if (Input.anyKey)
+        Debug.Log(inputX + ", " + inputY);
+        if (inputX != 0 && inputY != 0)
         {
-            //Up Animation
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (inputX > -0.5 && inputX <= 0.5)
             {
-                if (Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false)
+                //Up Animation
+                if (inputY > 0.5 && inputY <= 1)
                 {
                     player.Play("Dean_Up");
+                    transform.Translate(new Vector3(0, movementSpeed, 0));
+                    lastMove = LASTMOVE.e_UP;
                 }
-                transform.Translate(new Vector3(0, movementSpeed, 0));
-                lastKey = (int)KeyCode.UpArrow;
-            }
-            //Down Animation
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                if (Input.GetKey(KeyCode.LeftArrow) == false && Input.GetKey(KeyCode.RightArrow) == false)
+                //Down Animation
+                else if (inputY < -0.5 && inputY >= -1)
                 {
                     player.Play("Dean_Down");
+                    transform.Translate(new Vector3(0, -movementSpeed, 0));
+                    lastMove = LASTMOVE.e_DOWN;
                 }
-                transform.Translate(new Vector3(0, -movementSpeed, 0));
-                lastKey = (int)KeyCode.DownArrow;
             }
-
-            //Left Animation
-            if (Input.GetKey(KeyCode.LeftArrow))
+            else if (inputX <= -0.5 && inputX >= -1)
             {
-                player.Play("Dean_Left");
-                transform.Translate(new Vector3(-movementSpeed, 0, 0));
-                lastKey = (int)KeyCode.LeftArrow;
+                //Left Animation
+                if(inputY < 0.5 && inputY >= -0.5)
+                {
+                    player.Play("Dean_Left");
+                    transform.Translate(new Vector3(-movementSpeed, 0, 0));
+                    lastMove = LASTMOVE.e_LEFT;
+                }
             }
-
-            //Right Animation
-            else if (Input.GetKey(KeyCode.RightArrow))
+            else
             {
-                player.Play("Dean_Right");
-                transform.Translate(new Vector3(movementSpeed, 0, 0));
-                lastKey = (int)KeyCode.RightArrow;
+                //Right Animation
+                if (inputY < 0.5 & inputY >= -0.5)
+                {
+                    player.Play("Dean_Right");
+                    transform.Translate(new Vector3(movementSpeed, 0, 0));
+                    lastMove = LASTMOVE.e_RIGHT;
+                }
             }
         }
         else
         {
-            if (lastKey == (int)KeyCode.UpArrow)
+            switch (lastMove)
             {
-                player.Play("Idle_Up");
-            }
-            else if (lastKey == (int)KeyCode.DownArrow)
-            {
-                player.Play("Idle_Down");
-            }
-            else if (lastKey == (int)KeyCode.LeftArrow)
-            {
-                player.Play("Idle_Left");
-            }
-            else
-            {
-                player.Play("Idle_Right");
+                case (LASTMOVE.e_UP):
+                    player.Play("Idle_Up");
+                    break;
+
+                case (LASTMOVE.e_DOWN):
+                    player.Play("Idle_Down");
+                    break;
+
+                case (LASTMOVE.e_LEFT):
+                    player.Play("Idle_Left");
+                    break;
+
+                case (LASTMOVE.e_RIGHT):
+                    player.Play("Idle_Right");
+                    break;
+
+                default:
+                    player.Play("Idle_Down");
+                    break;
+
             }
         }
     }
