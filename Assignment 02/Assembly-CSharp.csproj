@@ -6,7 +6,7 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{F00656E7-41F5-8F7F-4A35-ECF0A455CBA5}</ProjectGuid>
+	<ProjectGuid>{B2984426-E5EC-A4CC-38E6-4425EFA6DD5F}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<AssemblyName>Assembly-CSharp</AssemblyName>
@@ -45,10 +45,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\TheScript\Joystick.cs" />
+     <Compile Include="Assets\TheScript\Menu\CameraDepthFix.cs" />
+     <Compile Include="Assets\TheScript\Menu\MainMenuEventHandler.cs" />
+     <Compile Include="Assets\TheScript\Player\Movement.cs" />
+     <Compile Include="Assets\TheScript\PrintToScreen.cs" />
      <Compile Include="Assets\TheScript\Response.cs" />
+     <Compile Include="Assets\TheScript\SSDLC.cs" />
      <Compile Include="Assets\TheScript\ScriptA.cs" />
      <Compile Include="Assets\TheScript\ScriptB.cs" />
-     <Compile Include="Assets\TheScript\move.cs" />
+     <Compile Include="Assets\TheScript\VirtualJoystick.cs" />
      <Compile Include="Assets\TheScript\rotate.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
