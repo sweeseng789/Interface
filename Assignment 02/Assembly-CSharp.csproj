@@ -45,16 +45,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TheScript\Joystick.cs" />
      <Compile Include="Assets\TheScript\Menu\CameraDepthFix.cs" />
      <Compile Include="Assets\TheScript\Menu\MainMenuEventHandler.cs" />
      <Compile Include="Assets\TheScript\Player\Movement.cs" />
      <Compile Include="Assets\TheScript\PrintToScreen.cs" />
      <Compile Include="Assets\TheScript\Response.cs" />
-     <Compile Include="Assets\TheScript\SSDLC.cs" />
      <Compile Include="Assets\TheScript\ScriptA.cs" />
      <Compile Include="Assets\TheScript\ScriptB.cs" />
      <Compile Include="Assets\TheScript\VirtualJoystick.cs" />
+     <Compile Include="Assets\TheScript\WeaponWheel.cs" />
      <Compile Include="Assets\TheScript\rotate.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

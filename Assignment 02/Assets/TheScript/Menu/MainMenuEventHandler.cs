@@ -11,16 +11,21 @@ public class MainMenuEventHandler : MonoBehaviour {
 	public GameObject PlayButton, ShopButton, ScoreButton, SettingButton, QuitButton;
 	public Text ButtonText;
 
-	float accel;
+	float draglen, accel;
+	Vector3 RotateAxis, rotateAroundPos;
+
 	// Use this for initialization
 	void Start () {
+		RotateAxis = Vector3.zero;
+		RotateAxis.Set(0, 1, -0.2f);
+		RotateAxis.Normalize();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		getInput ();
 
-		if (isDrag || accel > 0) {
+		if (isDrag || accel != 0) {
 			rotateMenu();
 			changeText();
 		}
@@ -31,7 +36,7 @@ public class MainMenuEventHandler : MonoBehaviour {
 			isClick = true;
 			clickPos = Input.mousePosition;
 		} 
-		else if (Input.GetMouseButtonUp (0)) {
+		else if (!Input.GetMouseButton(0)) {
 			isClick = false;
 			isDrag = false;
 		}
@@ -41,39 +46,76 @@ public class MainMenuEventHandler : MonoBehaviour {
     }
 
 	void rotateMenu (){
-		float draglen = clickPos.x - Input.mousePosition.x;
-		accel += draglen * Time.deltaTime * 10;
-		clickPos = Input.mousePosition;
-		
-		Vector3 axis = Vector3.zero;
-		axis.Set(0, 1, -0.2f);
-		axis.Normalize();
-		
-		Vector3 pos = canvas.transform.position;
-		pos.z+=50;
-		
-		var q = PlayButton.transform.rotation;
-		PlayButton.transform.RotateAround(pos, axis, accel);
-		PlayButton.transform.rotation = q;
-		
-		ShopButton.transform.RotateAround(pos, axis, accel);
-		ShopButton.transform.rotation = q;
-		
-		ScoreButton.transform.RotateAround(pos, axis, accel);
-		ScoreButton.transform.rotation = q;
-		
-		SettingButton.transform.RotateAround(pos, axis, accel);
-		SettingButton.transform.rotation = q;
-		
-		QuitButton.transform.RotateAround(pos, axis, accel);
-		QuitButton.transform.rotation = q;
+		rotateAroundPos = canvas.transform.position;
+		rotateAroundPos.z+=50;
 
-		accel -= 100 * Time.deltaTime;
-		if (accel < 0)
-			accel = 0;
+		if (Input.GetMouseButton (0)) {
+			draglen = (clickPos.x - Input.mousePosition.x) * Time.deltaTime * 20;
+			accel += (clickPos.x - Input.mousePosition.x) * Time.deltaTime;
+			clickPos = Input.mousePosition;
+
+			if (accel < 0) {
+				if (accel < -3)
+					accel = -3;
+				accel += Time.deltaTime * 10;
+				if (accel > 0)
+					accel = 0;
+			}
+			else {
+				if (accel > 3)
+					accel = 3;
+				accel -= Time.deltaTime * 10;
+				if (accel < 0)
+					accel = 0;
+			}
+
+			var q = PlayButton.transform.rotation;
+			PlayButton.transform.RotateAround (rotateAroundPos, RotateAxis, draglen);
+			PlayButton.transform.rotation = q;
+		
+			ShopButton.transform.RotateAround (rotateAroundPos, RotateAxis, draglen);
+			ShopButton.transform.rotation = q;
+		
+			ScoreButton.transform.RotateAround (rotateAroundPos, RotateAxis, draglen);
+			ScoreButton.transform.rotation = q;
+		
+			SettingButton.transform.RotateAround (rotateAroundPos, RotateAxis, draglen);
+			SettingButton.transform.rotation = q;
+		
+			QuitButton.transform.RotateAround (rotateAroundPos, RotateAxis, draglen);
+			QuitButton.transform.rotation = q;
+		}
+		else {
+			if (accel < 0) {
+				accel += Time.deltaTime;
+				if (accel > 0)
+					accel = 0;
+			}
+			else {
+				accel -= Time.deltaTime;
+				if (accel < 0)
+					accel = 0;
+			}
+
+			var q = PlayButton.transform.rotation;
+			PlayButton.transform.RotateAround (rotateAroundPos, RotateAxis, accel);
+			PlayButton.transform.rotation = q;
+			
+			ShopButton.transform.RotateAround (rotateAroundPos, RotateAxis, accel);
+			ShopButton.transform.rotation = q;
+			
+			ScoreButton.transform.RotateAround (rotateAroundPos, RotateAxis, accel);
+			ScoreButton.transform.rotation = q;
+			
+			SettingButton.transform.RotateAround (rotateAroundPos, RotateAxis, accel);
+			SettingButton.transform.rotation = q;
+			
+			QuitButton.transform.RotateAround (rotateAroundPos, RotateAxis, accel);
+			QuitButton.transform.rotation = q;
+		}
 
 		//debug += draglen;
-		print(PlayButton.transform.position.z);
+		print(accel);
 	}
 
 	void changeText (){
