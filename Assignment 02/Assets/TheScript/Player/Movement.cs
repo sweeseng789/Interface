@@ -30,9 +30,8 @@ public class Movement : MonoBehaviour
     {
         float inputX = joystick.Horizontal();
         float inputY = joystick.Vertical();
-        movementSpeed = 2.0f * Time.deltaTime;
+        movementSpeed = 100.0f * Time.deltaTime;
 
-        Debug.Log(inputX + ", " + inputY);
         if (inputX != 0 && inputY != 0)
         {
             if (inputX > -0.5 && inputX <= 0.5)
