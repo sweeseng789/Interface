@@ -13,16 +13,28 @@ public class Movement : MonoBehaviour
 
     Animator player;
     LASTMOVE lastMove;
+    Rigidbody2D rb2d;
     float movementSpeed;
     public VirtualJoystick joystick;
+    public Sprite sprite;
+
+    bool ableToMoveUp, ableToMoveDown, ableToMoveLeft, ableToMoveRight;
 
     // Use this for initialization
     void Start()
     {
         player = GetComponent<Animator>();
         movementSpeed = 0.0f;
-        joystick = GameObject.Find("Joystick Background").GetComponent<VirtualJoystick>();
+        joystick = GameObject.Find("Joystick Background - Movement").GetComponent<VirtualJoystick>();
         lastMove = LASTMOVE.e_DOWN;
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+
+        ableToMoveUp = ableToMoveDown = ableToMoveLeft = ableToMoveRight = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Test");
     }
 
     // Update is called once per frame
@@ -39,16 +51,22 @@ public class Movement : MonoBehaviour
                 //Up Animation
                 if (inputY > 0.5 && inputY <= 1)
                 {
-                    player.Play("Dean_Up");
-                    transform.Translate(new Vector3(0, movementSpeed, 0));
-                    lastMove = LASTMOVE.e_UP;
+                    if (ableToMoveUp)
+                    {
+                        player.Play("Dean_Up");
+                        rb2d.position = new Vector2(transform.position.x, transform.position.y + movementSpeed);
+                        lastMove = LASTMOVE.e_UP;
+                    }
                 }
                 //Down Animation
                 else if (inputY < -0.5 && inputY >= -1)
                 {
-                    player.Play("Dean_Down");
-                    transform.Translate(new Vector3(0, -movementSpeed, 0));
-                    lastMove = LASTMOVE.e_DOWN;
+                    if (ableToMoveDown)
+                    {
+                        player.Play("Dean_Down");
+                        rb2d.position = new Vector2(transform.position.x, transform.position.y - movementSpeed);
+                        lastMove = LASTMOVE.e_DOWN;
+                    }
                 }
             }
             else if (inputX <= -0.5 && inputX >= -1)
@@ -56,9 +74,12 @@ public class Movement : MonoBehaviour
                 //Left Animation
                 if(inputY < 0.5 && inputY >= -0.5)
                 {
-                    player.Play("Dean_Left");
-                    transform.Translate(new Vector3(-movementSpeed, 0, 0));
-                    lastMove = LASTMOVE.e_LEFT;
+                    if (ableToMoveLeft)
+                    {
+                        player.Play("Dean_Left");
+                        transform.Translate(new Vector3(-movementSpeed, 0, 0));
+                        lastMove = LASTMOVE.e_LEFT;
+                    }
                 }
             }
             else
@@ -66,9 +87,12 @@ public class Movement : MonoBehaviour
                 //Right Animation
                 if (inputY < 0.5 & inputY >= -0.5)
                 {
-                    player.Play("Dean_Right");
-                    transform.Translate(new Vector3(movementSpeed, 0, 0));
-                    lastMove = LASTMOVE.e_RIGHT;
+                    if (ableToMoveRight)
+                    {
+                        player.Play("Dean_Right");
+                        transform.Translate(new Vector3(movementSpeed, 0, 0));
+                        lastMove = LASTMOVE.e_RIGHT;
+                    }
                 }
             }
         }
@@ -98,5 +122,67 @@ public class Movement : MonoBehaviour
 
             }
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+        Vector2 pos = new Vector2();
+        pos.x = coll.transform.position.x - transform.position.x;
+        pos.y = coll.transform.position.y - transform.position.y;
+        pos.Normalize();
+
+        Vector2 tempPos = pos;
+        if (tempPos.x < 0)
+        {
+            tempPos.x = -tempPos.x;
+        }
+        if (tempPos.y < 0)
+        {
+            tempPos.y = -tempPos.y;
+        }
+
+        //Collision at X Axis
+        if (tempPos.x > tempPos.y)
+        {
+            //Right
+            if(pos.x < 0)
+            {
+                ableToMoveLeft = false;
+            }
+            //Left
+            else
+            {
+                ableToMoveRight = false;
+            }
+        }
+        //Collision at Y Axis
+        else
+        {
+            //Bottom
+            if (pos.y > 0)
+            {
+                ableToMoveUp = false;
+            }
+            //Top
+            else
+            {
+                ableToMoveDown = false;
+            }
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (!ableToMoveUp)
+            ableToMoveUp = true;
+
+        if (!ableToMoveDown)
+            ableToMoveDown = true;
+
+        if (!ableToMoveLeft)
+            ableToMoveLeft = true;
+
+        if (!ableToMoveRight)
+            ableToMoveRight = true;
     }
 }
