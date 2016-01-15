@@ -16,7 +16,6 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb2d;
     float movementSpeed;
     public VirtualJoystick joystick;
-    public Sprite sprite;
 
     bool ableToMoveUp, ableToMoveDown, ableToMoveLeft, ableToMoveRight;
 
@@ -126,6 +125,8 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
+        Physics2D.IgnoreLayerCollision(8, 10);
+
         Vector2 pos = new Vector2();
         pos.x = coll.transform.position.x - transform.position.x;
         pos.y = coll.transform.position.y - transform.position.y;
@@ -145,7 +146,7 @@ public class Movement : MonoBehaviour
         if (tempPos.x > tempPos.y)
         {
             //Right
-            if(pos.x < 0)
+            if (pos.x < 0)
             {
                 ableToMoveLeft = false;
             }

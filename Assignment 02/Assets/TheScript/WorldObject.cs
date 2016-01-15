@@ -3,41 +3,26 @@ using System.Collections.Generic;
 
 public class WorldObject : MonoBehaviour
 {
-    struct OBJ
-    {
-        public Vector2 pos;
-        public Vector2 size;
-
-        public OBJ(Vector2 pos, Vector2 size)
-        {
-            this.pos = pos;
-            this.size = size;
-        }
-    }
-
-    public Texture2D tree;
-    private List<OBJ> OBJList = new List<OBJ>();
+    public GameObject worldObj;
+    public Vector2 spawnDirection;
+    public int spawnCount = 0;
 
 	// Use this for initialization
 	void Start ()
     {
-        for(int a = 0; a < 100; ++a)
+        if(spawnDirection != null && spawnCount != 0)
         {
-            Vector2 pos = new Vector2(a * tree.width, a * tree.height);
-            pos.y *= -1;
-            Vector2 size = new Vector2(100, 100);
+            for(int a = 0; a < spawnCount; ++a)
+            {
+                GameObject newWorldObj = Instantiate(gameObject) as GameObject;
 
-            OBJ obj = new OBJ(pos, size);
-            OBJList.Add(obj);
+                Vector2 tempPos = new Vector2();
+
+                if(spawnDirection.x > 0)
+                {
+                    tempPos.x = transform.position.x + (a * newWorldObj.transform.localScale.x);
+                }
+            }
         }
 	}
-
-
-    void OnGUI()
-    {
-        foreach(OBJ obj in OBJList)
-        {
-            Graphics.DrawTexture(new Rect(obj.pos, obj.size), tree);
-        }
-    }
 }
