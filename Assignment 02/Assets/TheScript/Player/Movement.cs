@@ -39,86 +39,89 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float inputX = joystick.Horizontal();
-        float inputY = joystick.Vertical();
-        movementSpeed = 100.0f * Time.deltaTime;
-
-        if (inputX != 0 && inputY != 0)
+        if (Time.timeScale != 0)
         {
-            if (inputX > -0.5 && inputX <= 0.5)
+            float inputX = joystick.Horizontal();
+            float inputY = joystick.Vertical();
+            movementSpeed = 100.0f * Time.deltaTime;
+
+            if (inputX != 0 && inputY != 0)
             {
-                //Up Animation
-                if (inputY > 0.5 && inputY <= 1)
+                if (inputX > -0.5 && inputX <= 0.5)
                 {
-                    if (ableToMoveUp)
+                    //Up Animation
+                    if (inputY > 0.5 && inputY <= 1)
                     {
-                        player.Play("Dean_Up");
-                        rb2d.position = new Vector2(transform.position.x, transform.position.y + movementSpeed);
-                        lastMove = LASTMOVE.e_UP;
+                        if (ableToMoveUp)
+                        {
+                            player.Play("Dean_Up");
+                            rb2d.position = new Vector2(transform.position.x, transform.position.y + movementSpeed);
+                            lastMove = LASTMOVE.e_UP;
+                        }
+                    }
+                    //Down Animation
+                    else if (inputY < -0.5 && inputY >= -1)
+                    {
+                        if (ableToMoveDown)
+                        {
+                            player.Play("Dean_Down");
+                            rb2d.position = new Vector2(transform.position.x, transform.position.y - movementSpeed);
+                            lastMove = LASTMOVE.e_DOWN;
+                        }
                     }
                 }
-                //Down Animation
-                else if (inputY < -0.5 && inputY >= -1)
+                else if (inputX <= -0.5 && inputX >= -1)
                 {
-                    if (ableToMoveDown)
+                    //Left Animation
+                    if (inputY < 0.5 && inputY >= -0.5)
                     {
-                        player.Play("Dean_Down");
-                        rb2d.position = new Vector2(transform.position.x, transform.position.y - movementSpeed);
-                        lastMove = LASTMOVE.e_DOWN;
+                        if (ableToMoveLeft)
+                        {
+                            player.Play("Dean_Left");
+                            transform.Translate(new Vector3(-movementSpeed, 0, 0));
+                            lastMove = LASTMOVE.e_LEFT;
+                        }
                     }
                 }
-            }
-            else if (inputX <= -0.5 && inputX >= -1)
-            {
-                //Left Animation
-                if(inputY < 0.5 && inputY >= -0.5)
+                else
                 {
-                    if (ableToMoveLeft)
+                    //Right Animation
+                    if (inputY < 0.5 & inputY >= -0.5)
                     {
-                        player.Play("Dean_Left");
-                        transform.Translate(new Vector3(-movementSpeed, 0, 0));
-                        lastMove = LASTMOVE.e_LEFT;
+                        if (ableToMoveRight)
+                        {
+                            player.Play("Dean_Right");
+                            transform.Translate(new Vector3(movementSpeed, 0, 0));
+                            lastMove = LASTMOVE.e_RIGHT;
+                        }
                     }
                 }
             }
             else
             {
-                //Right Animation
-                if (inputY < 0.5 & inputY >= -0.5)
+                switch (lastMove)
                 {
-                    if (ableToMoveRight)
-                    {
-                        player.Play("Dean_Right");
-                        transform.Translate(new Vector3(movementSpeed, 0, 0));
-                        lastMove = LASTMOVE.e_RIGHT;
-                    }
+                    case (LASTMOVE.e_UP):
+                        player.Play("Idle_Up");
+                        break;
+
+                    case (LASTMOVE.e_DOWN):
+                        player.Play("Idle_Down");
+                        break;
+
+                    case (LASTMOVE.e_LEFT):
+                        player.Play("Idle_Left");
+                        break;
+
+                    case (LASTMOVE.e_RIGHT):
+                        player.Play("Idle_Right");
+                        break;
+
+                    default:
+                        player.Play("Idle_Down");
+                        break;
+
                 }
-            }
-        }
-        else
-        {
-            switch (lastMove)
-            {
-                case (LASTMOVE.e_UP):
-                    player.Play("Idle_Up");
-                    break;
-
-                case (LASTMOVE.e_DOWN):
-                    player.Play("Idle_Down");
-                    break;
-
-                case (LASTMOVE.e_LEFT):
-                    player.Play("Idle_Left");
-                    break;
-
-                case (LASTMOVE.e_RIGHT):
-                    player.Play("Idle_Right");
-                    break;
-
-                default:
-                    player.Play("Idle_Down");
-                    break;
-
             }
         }
     }

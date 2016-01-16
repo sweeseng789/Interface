@@ -25,24 +25,27 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            float inputX = joystick.Horizontal();
-            float inputY = joystick.Vertical();
-
-            float tempX = inputX, tempY = inputY;
-
-            if (tempX < 0)
-                tempX = -tempX;
-            if (tempY < 0)
-                tempY = -tempY;
-
-            if (tempX > 0.5 || tempY > 0.5)
+            if (Time.timeScale != 0)
             {
-                Vector2 newVel = getVel(inputX, inputY);
-                GameObject newBullet = Instantiate(bullet) as GameObject;
-                newBullet.transform.position = shotSpawn.position;
-                Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
-                rb2d.velocity = newVel * 200;
-                currentTiming = 0.0f;
+                float inputX = joystick.Horizontal();
+                float inputY = joystick.Vertical();
+
+                float tempX = inputX, tempY = inputY;
+
+                if (tempX < 0)
+                    tempX = -tempX;
+                if (tempY < 0)
+                    tempY = -tempY;
+
+                if (tempX > 0.5 || tempY > 0.5)
+                {
+                    Vector2 newVel = getVel(inputX, inputY);
+                    GameObject newBullet = Instantiate(bullet) as GameObject;
+                    newBullet.transform.position = shotSpawn.position;
+                    Rigidbody2D rb2d = newBullet.GetComponent<Rigidbody2D>();
+                    rb2d.velocity = newVel * 200;
+                    currentTiming = 0.0f;
+                }
             }
         }
     }
