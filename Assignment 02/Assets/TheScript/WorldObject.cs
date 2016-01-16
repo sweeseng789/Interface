@@ -10,19 +10,28 @@ public class WorldObject : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        if(spawnDirection != null && spawnCount != 0)
+        for (int a = 0; a < spawnCount; a++)
         {
-            for(int a = 0; a < spawnCount; ++a)
+            Vector2 newPos = transform.position;
+            if (spawnDirection.x > 0)
             {
-                GameObject newWorldObj = Instantiate(gameObject) as GameObject;
-
-                Vector2 tempPos = new Vector2();
-
-                if(spawnDirection.x > 0)
-                {
-                    tempPos.x = transform.position.x + (a * newWorldObj.transform.localScale.x);
-                }
+                newPos.x += a * worldObj.transform.localScale.x * 0.45f;
             }
+            else if (spawnDirection.x < 0)
+            {
+                newPos.x += -a * worldObj.transform.localScale.x * 0.45f;
+            }
+
+            if (spawnDirection.y > 0)
+            {
+                newPos.y += a * worldObj.transform.localScale.y * 0.45f;
+            }
+            else if (spawnDirection.y < 0)
+            {
+                newPos.y += -a * worldObj.transform.localScale.y * 0.45f;
+            }
+
+            Instantiate(worldObj, newPos, Quaternion.identity);
         }
-	}
+    }
 }

@@ -71,6 +71,7 @@
     <Compile Include="Assets\TheScript\BulletMovement.cs" />
     <Compile Include="Assets\TheScript\Menu\CameraDepthFix.cs" />
     <Compile Include="Assets\TheScript\Menu\MainMenuEventHandler.cs" />
+    <Compile Include="Assets\TheScript\Pause.cs" />
     <Compile Include="Assets\TheScript\Player\Movement.cs" />
     <Compile Include="Assets\TheScript\Player\Weapon.cs" />
     <Compile Include="Assets\TheScript\ScriptA.cs" />
