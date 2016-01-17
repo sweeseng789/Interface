@@ -15,9 +15,13 @@ public class BulletMovement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter2D(Collision2D coll)   
     {
         if (coll.gameObject.layer == 9)
+        {
+            Destroy(gameObject);
+        }
+        else if(coll.gameObject.layer == 11)
         {
             Destroy(gameObject);
         }

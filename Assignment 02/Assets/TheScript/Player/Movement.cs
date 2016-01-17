@@ -31,11 +31,6 @@ public class Movement : MonoBehaviour
         ableToMoveUp = ableToMoveDown = ableToMoveLeft = ableToMoveRight = true;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Debug.Log("Test");
-    }
-
     // Update is called once per frame
     void Update()
     {

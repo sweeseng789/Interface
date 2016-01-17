@@ -5,7 +5,6 @@ using System.Collections;
 
 public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-
     private Image background;
     private Image JoystickImage;
     private Vector3 inputVector;
@@ -15,6 +14,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     {
         background = GetComponent<Image>();
         JoystickImage = transform.GetChild(0).GetComponent<Image>();
+        //JoystickImage = GameObject.Find("Joystick Button").GetComponent<Image>();
     }
 
 

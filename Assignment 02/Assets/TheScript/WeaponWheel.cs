@@ -8,7 +8,7 @@ public class WeaponWheel : MonoBehaviour
     public Texture2D[] texture = new Texture2D[7]; //Current, Blank, Top, Right, Bottom, Left, Black Alpha background
     public Texture2D[] weapons = new Texture2D[4]; //Pistol, Sniper, SMG, Melee
 
-    private bool viewingWeaponWheel = false;
+    public bool viewingWeaponWheel = false;
 
 
 	// Update is called once per frame
@@ -19,51 +19,65 @@ public class WeaponWheel : MonoBehaviour
     void OnGUI()
     {
         //Comment to debug
-        GUI.backgroundColor = Color.clear;
-        GUI.depth = -100;
+        //GUI.backgroundColor = Color.clear;
 
         if (!joystick.usingJoystick)
         {
-            if (new Rect(Screen.width - 300, Screen.height - 295, 200, 70).Contains(Event.current.mousePosition))
+            if (Input.touchCount > 0)
             {
-                viewingWeaponWheel = true;
-            }
+                for (int a = 0; a < Input.touchCount; ++a)
+                {
 
-            if(viewingWeaponWheel)
-            {
-                //Render Alpha Background
-                GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), texture[6]);
+                    Touch touch = Input.GetTouch(a);
+                    Vector3 TouchPos = touch.position;
 
-                //Render weapon wheel in middle of screen
-                RenderWeaponWheel_Screen();
+                    TouchPos.y = Screen.height - touch.position.y;
 
-                //Render Buttons on shoot joystick
-                RenderWeaponWheel_Joystick();
+                    if(new Rect(Screen.width - 640, Screen.height - 790, 530, 230).Contains(TouchPos))
+                    {
+                        viewingWeaponWheel = true;   
+                    }
+
+                    if(viewingWeaponWheel)
+                    {
+                        Time.timeScale = 0;
+
+                        GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), texture[6]);
+
+                        RenderWeaponWheel_Screen();
+
+                        RenderWeaponWheel_Joystick(TouchPos);
+                    }
+                    else
+                    {
+                        GUI.DrawTexture(new Rect(Screen.width - 760, Screen.height - 785, 768, 768), defaultWeapon);
+                    }
+                }
             }
             else
             {
-                GUI.DrawTexture(new Rect(Screen.width - 330, Screen.height - 295, 256, 256), defaultWeapon);
+                GUI.DrawTexture(new Rect(Screen.width - 760, Screen.height - 785, 768, 768), defaultWeapon);
             }
         }
     }
 
-    void RenderWeaponWheel_Joystick()
+    void RenderWeaponWheel_Joystick(Vector3 TouchPos)
     {
-        GUI.DrawTexture(new Rect(Screen.width - 330, Screen.height - 295, 256, 256), texture[0]);
+        GUI.DrawTexture(new Rect(Screen.width - 760, Screen.height - 785, 768, 768), texture[0]);
 
-        if (new Rect(Screen.width - 300, Screen.height - 295, 200, 70).Contains(Event.current.mousePosition))//Top
+        if (new Rect(Screen.width - 640, Screen.height - 790, 530, 230).Contains(TouchPos)) //Top
         {
             texture[0] = texture[2];
         }
-        else if (new Rect(Screen.width - 290, Screen.height - 110, 180, 70).Contains(Event.current.mousePosition)) //Bottom
+        else if (new Rect(Screen.width - 640, Screen.height - 240, 530, 230).Contains(TouchPos)) //Bottom
         {
             texture[0] = texture[4];
         }
-        else if (new Rect(Screen.width - 330, Screen.height - 260, 70, 180).Contains(Event.current.mousePosition)) //Left
+        else if (new Rect(Screen.width - 770, Screen.height - 670, 230, 535).Contains(TouchPos)) //Left
         {
             texture[0] = texture[5];
         }
-        else if (new Rect(Screen.width - 140, Screen.height - 260, 70, 180).Contains(Event.current.mousePosition)) //Right
+        else if (new Rect(Screen.width - 210, Screen.height - 665, 230, 535).Contains(TouchPos)) //Right
         {
             texture[0] = texture[3];
         }
@@ -76,19 +90,19 @@ public class WeaponWheel : MonoBehaviour
 
     void RenderWeaponWheel_Screen()
     {
-        GUI.BeginGroup(new Rect(Screen.width / 2 - 256, Screen.height / 2 - 256, 512, 512), texture[0]);
+        GUI.BeginGroup(new Rect(Screen.width / 2 - 512, Screen.height / 2 - 512, 1024, 1024), texture[0]);
 
         //Top
-        GUI.DrawTexture(new Rect(180, 10, 150, 100), weapons[0]);
+        GUI.DrawTexture(new Rect(300, 10, weapons[0].width * 3, weapons[0].height * 3), weapons[0]);
 
-        //Bottom
-        GUI.DrawTexture(new Rect(150, 425, weapons[3].width - 30, weapons[3].height + 10), weapons[3]);
+        //bottom
+        GUI.DrawTexture(new Rect(280, 900, weapons[3].width * 2, weapons[3].height * 2), weapons[3]);
 
         //Left
-        GUI.DrawTexture(new Rect(40, 130, weapons[1].width - 50, weapons[1].height - 250), weapons[1]);
+        GUI.DrawTexture(new Rect(100, 250, weapons[1].width, weapons[1].height), weapons[1]);
 
         //Right
-        GUI.DrawTexture(new Rect(400, 130, weapons[2].width - 20, weapons[2].height - 20), weapons[2]);
+        GUI.DrawTexture(new Rect(830, 300, weapons[2].width * 1.5f, weapons[2].height * 1.5f), weapons[2]);
 
         GUI.EndGroup();
     }
