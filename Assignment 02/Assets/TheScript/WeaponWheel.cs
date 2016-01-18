@@ -15,7 +15,7 @@ public class WeaponWheel : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            GUI.backgroundColor = Color.clear;
+           // GUI.backgroundColor = Color.clear;
 
             GUI.BeginGroup(new Rect(Screen.width / 2 - 256, Screen.height / 2 - 256, 512, 512), texture[0]);
 

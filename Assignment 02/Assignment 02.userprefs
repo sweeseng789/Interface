@@ -1,13 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TheScript\Menu\MainMenuEventHandler.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TheScript\Menus\Utiliy\ScrollStopper.cs">
     <Files>
-      <File FileName="Assets\TheScript\Menu\MainMenuEventHandler.cs" Line="21" Column="26" />
-      <File FileName="Assets\TheScript\Menu\CameraDepthFix.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\Utiliy\ScrollStopper.cs" Line="15" Column="35" />
+      <File FileName="Assets\TheScript\Menus\MainMenuEventHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\Settings\SettingRotate.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\Settings\Settings_Controls.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\Settings\AutoScroller.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\ModeSelect\ChangeModeSelectPanel.cs" Line="66" Column="48" />
+      <File FileName="Assets\TheScript\Menus\ModeSelect\ModeSelectRotate.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\SimpleButtonScrollList.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Shing\Desktop\Interface\Assignment 02\Assets\TheScript\Menus\MainMenuEventHandler.cs" line="127" />
+      <Breakpoint file="C:\Users\Shing\Desktop\Interface\Assignment 02\Assets\TheScript\Menus\Settings\Settings_Controls.cs" line="30" />
+      <Breakpoint file="C:\Users\Shing\Desktop\Interface\Assignment 02\Assets\TheScript\Menus\Utiliy\ScrollStopper.cs" line="21" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
