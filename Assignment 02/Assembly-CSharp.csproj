@@ -55,27 +55,22 @@
      <Compile Include="Assets\TheScript\Menus\Settings\Settings_Controls.cs" />
      <Compile Include="Assets\TheScript\Menus\SimpleButton.cs" />
      <Compile Include="Assets\TheScript\Menus\SimpleButtonScrollList.cs" />
-     <Compile Include="Assets\TheScript\Menus\Utiliy\ScrollStopper.cs" />
+     <Compile Include="Assets\TheScript\Menus\Utiliy\ScrollPage.cs" />
      <Compile Include="Assets\TheScript\Menus\Utiliy\Slider2Text.cs" />
      <Compile Include="Assets\TheScript\Pause.cs" />
      <Compile Include="Assets\TheScript\Player\Movement.cs" />
      <Compile Include="Assets\TheScript\Player\Weapon.cs" />
      <Compile Include="Assets\TheScript\ScriptA.cs" />
      <Compile Include="Assets\TheScript\ScriptB.cs" />
+     <Compile Include="Assets\TheScript\StaticVarsNFuns.cs" />
      <Compile Include="Assets\TheScript\VirtualJoystick.cs" />
      <Compile Include="Assets\TheScript\WeaponWheel.cs" />
      <Compile Include="Assets\TheScript\WorldObject.cs" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

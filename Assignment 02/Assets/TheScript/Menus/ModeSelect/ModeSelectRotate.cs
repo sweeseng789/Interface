@@ -9,7 +9,7 @@ public class ModeSelectRotate : MonoBehaviour {
 	Vector3 clickPos;
 	bool isClick = false, isDrag = false;
 	
-	public Button AudioButton, ControlsButton, LanguageButton, CreditsButton;
+	public Button StoryButton, SurvivalButton, RescueButton;
 	Button currentButton;
 	public Text CurrentButtonText;
 	List<Button> buttons = new List<Button>();
@@ -29,22 +29,16 @@ public class ModeSelectRotate : MonoBehaviour {
 		Vector3 v3 = rekt.lossyScale;
 		rotateAroundPos.z+= v3.z * 2300;
 
-		var q = ControlsButton.transform.rotation;
-		ControlsButton.transform.RotateAround (rotateAroundPos, RotateAxis, 350);
-		ControlsButton.transform.rotation = q;
+		var q = SurvivalButton.transform.rotation;
+		SurvivalButton.transform.RotateAround (rotateAroundPos, RotateAxis, 350);
+		SurvivalButton.transform.rotation = q;
 			
-		LanguageButton.transform.RotateAround (rotateAroundPos, RotateAxis, 340);
-		LanguageButton.transform.rotation = q;
-			
-		CreditsButton.transform.RotateAround (rotateAroundPos, RotateAxis, 330);
-		CreditsButton.transform.rotation = q;
+		RescueButton.transform.RotateAround (rotateAroundPos, RotateAxis, 340);
+		RescueButton.transform.rotation = q;
 
-		buttons.Add (AudioButton);
-		buttons.Add (ControlsButton);
-		buttons.Add (LanguageButton);
-		buttons.Add (CreditsButton);
-
-		//AudioButton.GetComponent<Image>().enabled = false;
+		buttons.Add (StoryButton);
+		buttons.Add (SurvivalButton);
+		buttons.Add (RescueButton);
 
 		changeAlpha ();
 	}
@@ -115,13 +109,13 @@ public class ModeSelectRotate : MonoBehaviour {
 					accel = 0.01f;
 			}
 
-			var q = AudioButton.transform.rotation;
+			var q = StoryButton.transform.rotation;
 			for (int i = 0; i < buttons.Count; i++) {
 				buttons [i].transform.RotateAround (rotateAroundPos, RotateAxis, draglen);
 				buttons [i].transform.rotation = q;
 			}
 		} else {
-			var q = AudioButton.transform.rotation;
+			var q = StoryButton.transform.rotation;
 			foreach (Button button in buttons) {
 				button.transform.RotateAround (rotateAroundPos, RotateAxis, accel);
 				button.transform.rotation = q;
@@ -154,17 +148,14 @@ public class ModeSelectRotate : MonoBehaviour {
 	}
 
 	void changeText (){
-		if (AudioButton.transform.position.z - canvas.transform.position.z < 1) {
+		if (StoryButton.transform.position.z - canvas.transform.position.z < 1) {
 			CurrentButtonText.text = "Audio";
 		}
-		else if (ControlsButton.transform.position.z - canvas.transform.position.z < 1) {
+		else if (SurvivalButton.transform.position.z - canvas.transform.position.z < 1) {
 			CurrentButtonText.text = "Controls";
 		}
-		else if (LanguageButton.transform.position.z - canvas.transform.position.z < 1) {
+		else if (RescueButton.transform.position.z - canvas.transform.position.z < 1) {
 			CurrentButtonText.text = "Language";
-		}
-		else if (CreditsButton.transform.position.z - canvas.transform.position.z < 1) {
-			CurrentButtonText.text = "Credits";
 		}
 		else
 			CurrentButtonText.text = "";

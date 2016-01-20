@@ -1,23 +1,25 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TheScript\Menus\Utiliy\ScrollStopper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TheScript\StaticVarsNFuns.cs">
     <Files>
-      <File FileName="Assets\TheScript\Menus\Utiliy\ScrollStopper.cs" Line="15" Column="35" />
-      <File FileName="Assets\TheScript\Menus\MainMenuEventHandler.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\MainMenuEventHandler.cs" Line="112" Column="27" />
+      <File FileName="Assets\TheScript\Menus\Utiliy\ScrollPage.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\SimpleButtonScrollList.cs" Line="1" Column="1" />
       <File FileName="Assets\TheScript\Menus\Settings\SettingRotate.cs" Line="1" Column="1" />
       <File FileName="Assets\TheScript\Menus\Settings\Settings_Controls.cs" Line="1" Column="1" />
       <File FileName="Assets\TheScript\Menus\Settings\AutoScroller.cs" Line="1" Column="1" />
-      <File FileName="Assets\TheScript\Menus\ModeSelect\ChangeModeSelectPanel.cs" Line="66" Column="48" />
+      <File FileName="Assets\TheScript\Menus\ModeSelect\ChangeModeSelectPanel.cs" Line="1" Column="1" />
       <File FileName="Assets\TheScript\Menus\ModeSelect\ModeSelectRotate.cs" Line="1" Column="1" />
-      <File FileName="Assets\TheScript\Menus\SimpleButtonScrollList.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\Menus\SimpleButton.cs" Line="1" Column="1" />
+      <File FileName="Assets\TheScript\StaticVarsNFuns.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="C:\Users\Shing\Desktop\Interface\Assignment 02\Assets\TheScript\Menus\MainMenuEventHandler.cs" line="127" />
       <Breakpoint file="C:\Users\Shing\Desktop\Interface\Assignment 02\Assets\TheScript\Menus\Settings\Settings_Controls.cs" line="30" />
-      <Breakpoint file="C:\Users\Shing\Desktop\Interface\Assignment 02\Assets\TheScript\Menus\Utiliy\ScrollStopper.cs" line="21" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="Assets\TheScript\Menus\Utiliy\ScrollStopper.cs" line="27" offsetX="601" offsetY="295" expression="currentPanel" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

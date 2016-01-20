@@ -44,8 +44,6 @@ public class SettingRotate : MonoBehaviour {
 		buttons.Add (LanguageButton);
 		buttons.Add (CreditsButton);
 
-		//AudioButton.GetComponent<Image>().enabled = false;
-
 		changeAlpha ();
 	}
 

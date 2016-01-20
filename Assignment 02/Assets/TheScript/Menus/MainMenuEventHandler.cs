@@ -29,7 +29,7 @@ public class MainMenuEventHandler : MonoBehaviour {
 	float draglen, accel;
 	Vector3 RotateAxis, rotateAroundPos;
 
-			// Use this for initialization
+	// Use this for initialization
 	void Start () {
 		state = states.animation;
 
@@ -89,7 +89,7 @@ public class MainMenuEventHandler : MonoBehaviour {
 			break;
 
 		case states.interective:
-			getInput ();
+			//getInput ();
 
 			if (isDrag || accel != 0) {
 				rotateMenu();
@@ -112,6 +112,10 @@ public class MainMenuEventHandler : MonoBehaviour {
 					currentButton.transform.RotateAround (rotateAroundPos, RotateAxis, -0.01f);
 					currentButton.transform.rotation = q;
 				} else {
+					if(currentButton == SettingButton)
+					{
+						StaticVarsNFuns.GoToSettings();
+					}
 					currentButton = null;
 				}
 			}
@@ -122,8 +126,7 @@ public class MainMenuEventHandler : MonoBehaviour {
 
 	void getInput() {
 		//if (Input.GetMouseButtonDown (0) && isClick == false && Input.mousePosition.y < Screen.height/1.8f) {
-		if (Input.touchCount == 1) {
-			if (Input.GetTouch (0).phase == TouchPhase.Began && Input.GetTouch (0).position.y < Screen.height / 1.8f) {
+		if (Input.GetMouseButtonDown (0) && isClick == false && Input.mousePosition.y < Screen.height/1.8f) {
 				isClick = true;
 				clickPos = Input.mousePosition;
 			} else if (Input.GetTouch (0).phase == TouchPhase.Ended) {//(!Input.GetMouseButton(0)) {
@@ -132,12 +135,11 @@ public class MainMenuEventHandler : MonoBehaviour {
 			} else if (Input.GetTouch (0).phase == TouchPhase.Moved) { //(isClick && (Input.mousePosition - clickPos).magnitude > 1) {
 				isDrag = true;
 			}
-		}
 	}
 
 	void rotateMenu (){
-		if (Input.GetMouseButton (0) && currentButton == null && Input.mousePosition.y < Screen.height/1.8f) {
-			draglen = (clickPos.x - Input.mousePosition.x) * Time.deltaTime * 20;
+		if (isDrag && currentButton == null) {
+			draglen = (clickPos.x/Screen.width - Input.mousePosition.x/Screen.width) * 10000 * Time.deltaTime;
 			accel += (clickPos.x - Input.mousePosition.x) * Time.deltaTime;
 			clickPos = Input.mousePosition;
 
@@ -240,5 +242,21 @@ public class MainMenuEventHandler : MonoBehaviour {
 			}
 			buttons[i].transform.SetSiblingIndex(slot);
 		}
+	}
+
+	public void onCLick() {
+		isClick = true;
+	}
+
+	public void onDown() {
+		clickPos = Input.mousePosition;
+	}
+
+	public void onDrag() {
+		isDrag = true;
+	}
+
+	public void onUp() {
+		isDrag = false;
 	}
 }
