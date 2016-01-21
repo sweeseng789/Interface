@@ -142,4 +142,13 @@ public class ScrollPage : MonoBehaviour {
 		currentPanel = panels[pos];
 		snaped = false;			
 	}
+
+	public int getCurrentPageIndex () {
+		for (int i = 0; i < panels.Count; ++i) {
+			if (currentPanel == panels [i]) {
+				return i;
+			}
+		}
+		return 0;
+	}
 }

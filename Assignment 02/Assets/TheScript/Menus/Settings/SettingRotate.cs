@@ -7,7 +7,7 @@ public class SettingRotate : MonoBehaviour {
 	public CanvasGroup canvas;
 
 	Vector3 clickPos;
-	bool isClick = false, isDrag = false;
+	bool isDrag = false;
 	
 	public Button AudioButton, ControlsButton, LanguageButton, CreditsButton;
 	Button currentButton;
@@ -49,8 +49,6 @@ public class SettingRotate : MonoBehaviour {
 
 	//Update is called once per frame
 	void Update () {
-		getInput ();
-	
 		if (isDrag || accel != 0) {
 			rotateMenu();
 			changeText();
@@ -76,26 +74,10 @@ public class SettingRotate : MonoBehaviour {
 			}
 		}
 	}
-	
-
-	void getInput() {
-		if (Input.GetMouseButtonDown (0) && isClick == false && Input.mousePosition.y < Screen.height/2.8f) {
-			isClick = true;
-			clickPos = Input.mousePosition;
-			currentButton = null;
-		} 
-		else if (!Input.GetMouseButton(0)) {
-			isClick = false;
-			isDrag = false;
-		}
-		if (isClick && (Input.mousePosition - clickPos).magnitude > 1) {
-			isDrag = true;
-		}
-	}
 
 	void rotateMenu (){
-		if (Input.GetMouseButton (0) && currentButton == null && Input.mousePosition.y < Screen.height/2.8f) {
-			draglen = (clickPos.x - Input.mousePosition.x) * Time.deltaTime * 3.5f;
+		if (isDrag && currentButton == null) {
+			draglen = (clickPos.x/Screen.width - Input.mousePosition.x/Screen.width) * 1900 * Time.deltaTime;
 			accel += (clickPos.x - Input.mousePosition.x) * Time.deltaTime;
 			clickPos = Input.mousePosition;
 
@@ -194,5 +176,18 @@ public class SettingRotate : MonoBehaviour {
 			}
 			buttons[i].transform.SetSiblingIndex(slot);
 		}
+	}
+
+	
+	public void onDown() {
+		clickPos = Input.mousePosition;
+	}
+	
+	public void onDrag() {
+		isDrag = true;
+	}
+	
+	public void onUp() {
+		isDrag = false;
 	}
 }

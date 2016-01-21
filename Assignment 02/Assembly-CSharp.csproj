@@ -49,6 +49,7 @@
      <Compile Include="Assets\TheScript\Menus\MainMenuEventHandler.cs" />
      <Compile Include="Assets\TheScript\Menus\ModeSelect\ChangeModeSelectPanel.cs" />
      <Compile Include="Assets\TheScript\Menus\ModeSelect\ModeSelectRotate.cs" />
+     <Compile Include="Assets\TheScript\Menus\ModeSelect\SwitchBGForStory.cs" />
      <Compile Include="Assets\TheScript\Menus\Settings\AutoScroller.cs" />
      <Compile Include="Assets\TheScript\Menus\Settings\ChangeSettingPanel.cs" />
      <Compile Include="Assets\TheScript\Menus\Settings\SettingRotate.cs" />
@@ -60,6 +61,7 @@
      <Compile Include="Assets\TheScript\Pause.cs" />
      <Compile Include="Assets\TheScript\Player\Movement.cs" />
      <Compile Include="Assets\TheScript\Player\Weapon.cs" />
+     <Compile Include="Assets\TheScript\PopUpScript.cs" />
      <Compile Include="Assets\TheScript\ScriptA.cs" />
      <Compile Include="Assets\TheScript\ScriptB.cs" />
      <Compile Include="Assets\TheScript\StaticVarsNFuns.cs" />

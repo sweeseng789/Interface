@@ -149,13 +149,13 @@ public class ModeSelectRotate : MonoBehaviour {
 
 	void changeText (){
 		if (StoryButton.transform.position.z - canvas.transform.position.z < 1) {
-			CurrentButtonText.text = "Audio";
+			CurrentButtonText.text = "Story";
 		}
 		else if (SurvivalButton.transform.position.z - canvas.transform.position.z < 1) {
-			CurrentButtonText.text = "Controls";
+			CurrentButtonText.text = "Survival";
 		}
 		else if (RescueButton.transform.position.z - canvas.transform.position.z < 1) {
-			CurrentButtonText.text = "Language";
+			CurrentButtonText.text = "Rescue";
 		}
 		else
 			CurrentButtonText.text = "";

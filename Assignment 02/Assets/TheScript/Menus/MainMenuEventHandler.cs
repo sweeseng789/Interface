@@ -19,7 +19,7 @@ public class MainMenuEventHandler : MonoBehaviour {
 	Color alphaVar;
 
 	Vector3 clickPos;
-	bool isClick = false, isDrag = false;
+	bool isDrag = false, isClick = false;
 	
 	public Button PlayButton, ShopButton, ScoreButton, SettingButton, QuitButton;
 	Button currentButton;
@@ -89,8 +89,6 @@ public class MainMenuEventHandler : MonoBehaviour {
 			break;
 
 		case states.interective:
-			//getInput ();
-
 			if (isDrag || accel != 0) {
 				rotateMenu();
 				changeText();
@@ -112,29 +110,17 @@ public class MainMenuEventHandler : MonoBehaviour {
 					currentButton.transform.RotateAround (rotateAroundPos, RotateAxis, -0.01f);
 					currentButton.transform.rotation = q;
 				} else {
-					if(currentButton == SettingButton)
-					{
-						StaticVarsNFuns.GoToSettings();
+					if (isClick) {
+						if(currentButton == SettingButton) {
+							StaticVarsNFuns.GoToSettings();
+						}
 					}
 					currentButton = null;
+					isClick = false;
 				}
 			}
 			break;
 		}
-	}
-	
-
-	void getInput() {
-		//if (Input.GetMouseButtonDown (0) && isClick == false && Input.mousePosition.y < Screen.height/1.8f) {
-		if (Input.GetMouseButtonDown (0) && isClick == false && Input.mousePosition.y < Screen.height/1.8f) {
-				isClick = true;
-				clickPos = Input.mousePosition;
-			} else if (Input.GetTouch (0).phase == TouchPhase.Ended) {//(!Input.GetMouseButton(0)) {
-				isClick = false;
-				isDrag = false;
-			} else if (Input.GetTouch (0).phase == TouchPhase.Moved) { //(isClick && (Input.mousePosition - clickPos).magnitude > 1) {
-				isDrag = true;
-			}
 	}
 
 	void rotateMenu (){
@@ -225,8 +211,10 @@ public class MainMenuEventHandler : MonoBehaviour {
 	}
 
 	public void buttonOnClick (Button GO){
-		if(!isDrag)
+		if (!isDrag) {
 			currentButton = GO;
+			isClick = true;
+		}
 	}
 
 	void renderOrder ()
@@ -242,10 +230,6 @@ public class MainMenuEventHandler : MonoBehaviour {
 			}
 			buttons[i].transform.SetSiblingIndex(slot);
 		}
-	}
-
-	public void onCLick() {
-		isClick = true;
 	}
 
 	public void onDown() {

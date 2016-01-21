@@ -35,15 +35,15 @@ public class ChangeModeSelectPanel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(LastButtonText.text != CurrentButtonText.text) {
-			if(CurrentButtonText.text == "Audio"){
+			if(CurrentButtonText.text == "Story"){
 				currentPanel = StoryPanel;
 				LastButtonText.text = CurrentButtonText.text;
 			}
-			else if(CurrentButtonText.text == "Controls") {
+			else if(CurrentButtonText.text == "Survival") {
 				currentPanel = SurvivalPanel;
 				LastButtonText.text = CurrentButtonText.text;
 			}
-			else if(CurrentButtonText.text == "Language") {
+			else if(CurrentButtonText.text == "Rescue") {
 				currentPanel = RescuePanel;
 				LastButtonText.text = CurrentButtonText.text;
 			}
