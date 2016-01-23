@@ -68,22 +68,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TheScript\BulletMovement.cs" />
-    <Compile Include="Assets\TheScript\Enemy\EnemyUpdate.cs" />
-    <Compile Include="Assets\TheScript\Menu\CameraDepthFix.cs" />
-    <Compile Include="Assets\TheScript\Menu\MainMenuEventHandler.cs" />
-    <Compile Include="Assets\TheScript\PauseUpdate.cs" />
-    <Compile Include="Assets\TheScript\Player\Crosshair.cs" />
-    <Compile Include="Assets\TheScript\Player\Health.cs" />
-    <Compile Include="Assets\TheScript\Player\Movement.cs" />
-    <Compile Include="Assets\TheScript\Player\Weapon.cs" />
-    <Compile Include="Assets\TheScript\RandomSpawn.cs" />
-    <Compile Include="Assets\TheScript\ScriptA.cs" />
-    <Compile Include="Assets\TheScript\ScriptB.cs" />
-    <Compile Include="Assets\TheScript\Unrender.cs" />
+    <Compile Include="Assets\TheScript\CSVLoader.cs" />
+    <Compile Include="Assets\TheScript\GameAsset\Bullet.cs" />
+    <Compile Include="Assets\TheScript\GameAsset\Enemy.cs" />
+    <Compile Include="Assets\TheScript\GameAsset\Player.cs" />
+    <Compile Include="Assets\TheScript\Pause.cs" />
+    <Compile Include="Assets\TheScript\ScaleToCamera.cs" />
+    <Compile Include="Assets\TheScript\SceneManager.cs" />
+    <Compile Include="Assets\TheScript\Score Screen\SceneManager_Score.cs" />
     <Compile Include="Assets\TheScript\VirtualJoystick.cs" />
+    <Compile Include="Assets\TheScript\Weapon.cs" />
     <Compile Include="Assets\TheScript\WeaponWheel.cs" />
-    <Compile Include="Assets\TheScript\WorldObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

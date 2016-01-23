@@ -14,7 +14,6 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     {
         background = GetComponent<Image>();
         JoystickImage = transform.GetChild(0).GetComponent<Image>();
-        //JoystickImage = GameObject.Find("Joystick Button").GetComponent<Image>();
     }
 
 
