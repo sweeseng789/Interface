@@ -224,7 +224,7 @@ public class Player : MonoBehaviour
 
                     rb2d.velocity = newVel;
                     pushedBack = true;
-                    playerHealth -= 100;
+                    playerHealth -= 10;
                 }
                 break;
 

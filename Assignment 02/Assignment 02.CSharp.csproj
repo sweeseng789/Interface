@@ -72,13 +72,28 @@
     <Compile Include="Assets\TheScript\GameAsset\Bullet.cs" />
     <Compile Include="Assets\TheScript\GameAsset\Enemy.cs" />
     <Compile Include="Assets\TheScript\GameAsset\Player.cs" />
+    <Compile Include="Assets\TheScript\Menus\MainMenuEventHandler.cs" />
+    <Compile Include="Assets\TheScript\Menus\ModeSelect\ChangeModeSelectPanel.cs" />
+    <Compile Include="Assets\TheScript\Menus\ModeSelect\ModeSelectRotate.cs" />
+    <Compile Include="Assets\TheScript\Menus\ModeSelect\SwitchBGForStory.cs" />
+    <Compile Include="Assets\TheScript\Menus\Settings\AutoScroller.cs" />
+    <Compile Include="Assets\TheScript\Menus\Settings\ChangeSettingPanel.cs" />
+    <Compile Include="Assets\TheScript\Menus\Settings\SettingRotate.cs" />
+    <Compile Include="Assets\TheScript\Menus\Settings\Settings_Controls.cs" />
+    <Compile Include="Assets\TheScript\Menus\SimpleButton.cs" />
+    <Compile Include="Assets\TheScript\Menus\SimpleButtonScrollList.cs" />
+    <Compile Include="Assets\TheScript\Menus\Utiliy\ScrollPage.cs" />
+    <Compile Include="Assets\TheScript\Menus\Utiliy\Slider2Text.cs" />
     <Compile Include="Assets\TheScript\Pause.cs" />
+    <Compile Include="Assets\TheScript\PopUpScript.cs" />
     <Compile Include="Assets\TheScript\ScaleToCamera.cs" />
     <Compile Include="Assets\TheScript\SceneManager.cs" />
     <Compile Include="Assets\TheScript\Score Screen\SceneManager_Score.cs" />
+    <Compile Include="Assets\TheScript\StaticVarsNFuns.cs" />
     <Compile Include="Assets\TheScript\VirtualJoystick.cs" />
     <Compile Include="Assets\TheScript\Weapon.cs" />
     <Compile Include="Assets\TheScript\WeaponWheel.cs" />
+    <Compile Include="Assets\TheScript\WorldObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
