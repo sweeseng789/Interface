@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
+
 public class Item {
 	public Sprite icon;
 	public string name;

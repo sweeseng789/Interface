@@ -4,12 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ChangeModeSelectPanel : MonoBehaviour {
-	//SettingRotate settingrotatescript;
 	public CanvasGroup canvas;
 	public Text CurrentButtonText;
 	Text LastButtonText;
 
-	public GameObject AudioPanel, ControlPanel, LanguagePanel, CreditsPanel;
+	public GameObject StoryPanel, SurvivalPanel, RescuePanel;
 	GameObject currentPanel;
 	List<GameObject> panels = new List<GameObject>();
 
@@ -20,10 +19,9 @@ public class ChangeModeSelectPanel : MonoBehaviour {
 
 		currentPanel = null;
 
-		panels.Add (AudioPanel);
-		panels.Add (ControlPanel);
-		panels.Add (LanguagePanel);
-		panels.Add (CreditsPanel);
+		panels.Add (StoryPanel);
+		panels.Add (SurvivalPanel);
+		panels.Add (RescuePanel);
 
 		RectTransform rekt = canvas.GetComponent<RectTransform> ();
 
@@ -37,20 +35,16 @@ public class ChangeModeSelectPanel : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(LastButtonText.text != CurrentButtonText.text) {
-			if(CurrentButtonText.text == "Audio"){
-				currentPanel = AudioPanel;
+			if(CurrentButtonText.text == "Story"){
+				currentPanel = StoryPanel;
 				LastButtonText.text = CurrentButtonText.text;
 			}
-			else if(CurrentButtonText.text == "Controls") {
-				currentPanel = ControlPanel;
+			else if(CurrentButtonText.text == "Survival") {
+				currentPanel = SurvivalPanel;
 				LastButtonText.text = CurrentButtonText.text;
 			}
-			else if(CurrentButtonText.text == "Language") {
-				currentPanel = LanguagePanel;
-				LastButtonText.text = CurrentButtonText.text;
-			}
-			else if(CurrentButtonText.text == "Credits") {
-				currentPanel = CreditsPanel;
+			else if(CurrentButtonText.text == "Rescue") {
+				currentPanel = RescuePanel;
 				LastButtonText.text = CurrentButtonText.text;
 			}
 		}
