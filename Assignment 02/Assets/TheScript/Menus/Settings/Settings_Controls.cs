@@ -4,8 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Settings_Controls : MonoBehaviour {
-	public Image Move, Attack;
-	public Toggle AutoAim, InvertedControls, FixedPos;
+	public GameObject Move, Attack;
+	public Toggle AutoAim, InvertedControls;
+	public Slider opacity;
 
 	Vector3 leftSide,rightSide;
 
@@ -34,5 +35,12 @@ public class Settings_Controls : MonoBehaviour {
 			Move.transform.localPosition = leftSide;
 			Attack.transform.localPosition = rightSide;
 		}
+
+		Color tem = Move.GetComponent<Image>().color;
+		tem.a = opacity.value;
+		Move.GetComponent<Image>().color = tem;
+		Move.GetComponentsInChildren<Image> ()[1].color = tem;
+		Attack.GetComponent<Image>().color = tem;
+		Attack.GetComponentsInChildren<Image> ()[1].color = tem;
 	}
 }

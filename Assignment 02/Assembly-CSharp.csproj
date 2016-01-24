@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\TheScript\BulletMovement.cs" />
+     <Compile Include="Assets\TheScript\Menus\Highscore\ChangeHiPage.cs" />
+     <Compile Include="Assets\TheScript\Menus\Highscore\HighscoreList.cs" />
+     <Compile Include="Assets\TheScript\Menus\Highscore\HighscoreTab.cs" />
      <Compile Include="Assets\TheScript\Menus\MainMenuEventHandler.cs" />
      <Compile Include="Assets\TheScript\Menus\ModeSelect\ChangeModeSelectPanel.cs" />
      <Compile Include="Assets\TheScript\Menus\ModeSelect\ModeSelectRotate.cs" />
@@ -54,8 +57,12 @@
      <Compile Include="Assets\TheScript\Menus\Settings\ChangeSettingPanel.cs" />
      <Compile Include="Assets\TheScript\Menus\Settings\SettingRotate.cs" />
      <Compile Include="Assets\TheScript\Menus\Settings\Settings_Controls.cs" />
+     <Compile Include="Assets\TheScript\Menus\Shop\ShopHandler.cs" />
+     <Compile Include="Assets\TheScript\Menus\Shop\ShopWeapon.cs" />
+     <Compile Include="Assets\TheScript\Menus\Shop\ShopWeaponList.cs" />
      <Compile Include="Assets\TheScript\Menus\SimpleButton.cs" />
      <Compile Include="Assets\TheScript\Menus\SimpleButtonScrollList.cs" />
+     <Compile Include="Assets\TheScript\Menus\Splash\BlinkingText.cs" />
      <Compile Include="Assets\TheScript\Menus\Utiliy\ScrollPage.cs" />
      <Compile Include="Assets\TheScript\Menus\Utiliy\Slider2Text.cs" />
      <Compile Include="Assets\TheScript\Pause.cs" />

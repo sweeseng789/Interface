@@ -7,7 +7,7 @@ public class ModeSelectRotate : MonoBehaviour {
 	public CanvasGroup canvas;
 
 	Vector3 clickPos;
-	bool isClick = false, isDrag = false;
+	bool isDrag = false;
 	
 	public Button StoryButton, SurvivalButton, RescueButton;
 	Button currentButton;
@@ -45,7 +45,6 @@ public class ModeSelectRotate : MonoBehaviour {
 
 	//Update is called once per frame
 	void Update () {
-		getInput ();
 	
 		if (isDrag || accel != 0) {
 			rotateMenu();
@@ -72,26 +71,10 @@ public class ModeSelectRotate : MonoBehaviour {
 			}
 		}
 	}
-	
-
-	void getInput() {
-		if (Input.GetMouseButtonDown (0) && isClick == false && Input.mousePosition.y < Screen.height/2.8f) {
-			isClick = true;
-			clickPos = Input.mousePosition;
-			currentButton = null;
-		} 
-		else if (!Input.GetMouseButton(0)) {
-			isClick = false;
-			isDrag = false;
-		}
-		if (isClick && (Input.mousePosition - clickPos).magnitude > 1) {
-			isDrag = true;
-		}
-	}
 
 	void rotateMenu (){
-		if (Input.GetMouseButton (0) && currentButton == null && Input.mousePosition.y < Screen.height/2.8f) {
-			draglen = (clickPos.x - Input.mousePosition.x) * Time.deltaTime * 3.5f;
+		if (isDrag) {
+			draglen = (clickPos.x/Screen.width - Input.mousePosition.x/Screen.width) * 1900 * Time.deltaTime;
 			accel += (clickPos.x - Input.mousePosition.x) * Time.deltaTime;
 			clickPos = Input.mousePosition;
 
@@ -187,5 +170,18 @@ public class ModeSelectRotate : MonoBehaviour {
 			}
 			buttons[i].transform.SetSiblingIndex(slot);
 		}
+	}
+	
+	public void onDown() {
+		currentButton = null;
+		clickPos = Input.mousePosition;
+	}
+	
+	public void onDrag() {
+		isDrag = true;
+	}
+	
+	public void onUp() {
+		isDrag = false;
 	}
 }

@@ -124,7 +124,7 @@ public class MainMenuEventHandler : MonoBehaviour {
 	}
 
 	void rotateMenu (){
-		if (isDrag && currentButton == null) {
+		if (isDrag) {
 			draglen = (clickPos.x/Screen.width - Input.mousePosition.x/Screen.width) * 10000 * Time.deltaTime;
 			accel += (clickPos.x - Input.mousePosition.x) * Time.deltaTime;
 			clickPos = Input.mousePosition;
@@ -232,11 +232,19 @@ public class MainMenuEventHandler : MonoBehaviour {
 		}
 	}
 
+	public void ChangeLogin (Text T) {
+		if (T.text == "Sign In")
+			T.text = "Sign Out";
+		else
+			T.text = "Sign In";
+	}
+
 	public void onDown() {
 		clickPos = Input.mousePosition;
 	}
 
 	public void onDrag() {
+		currentButton = null;
 		isDrag = true;
 	}
 
