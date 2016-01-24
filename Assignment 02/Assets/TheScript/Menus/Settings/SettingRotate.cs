@@ -177,13 +177,13 @@ public class SettingRotate : MonoBehaviour {
 			buttons[i].transform.SetSiblingIndex(slot);
 		}
 	}
-
 	
 	public void onDown() {
 		clickPos = Input.mousePosition;
 	}
 	
 	public void onDrag() {
+		currentButton = null;
 		isDrag = true;
 	}
 	

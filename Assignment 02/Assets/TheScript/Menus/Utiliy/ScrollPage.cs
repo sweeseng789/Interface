@@ -20,8 +20,8 @@ public class ScrollPage : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Vector3 temppos;
 		for (int i = 1; i < panels.Count; ++i) {
-			Vector3 temppos;
 			temppos = panels[i].transform.localPosition;
 			temppos.x += scrollrekt.content.rect.width * 1.3f * i;
 			panels[i].transform.localPosition = temppos;
@@ -49,7 +49,8 @@ public class ScrollPage : MonoBehaviour {
 			}
 			currentPanel = panels[index];
 			snaped = false;
-			dots.GetComponent<SimpleButtonScrollList>().changeAlphaOnClick(index);
+			if(dots != null)
+				dots.GetComponent<SimpleButtonScrollList>().changeAlphaOnClick(index);
 		}
 
 		if (snaped == false) {
@@ -83,6 +84,12 @@ public class ScrollPage : MonoBehaviour {
 				panels [i].transform.position = temppos;
 			}
 			if (currentPanel.transform.position.x < centerX ) {
+				dist = Mathf.Abs (currentPanel.transform.position.x - centerX);
+				for (int i = 0; i < panels.Count; ++i) {
+					temppos = panels [i].transform.position;
+					temppos.x += dist;
+					panels [i].transform.position = temppos;
+				}
 				snaped = true;
 			}
 
@@ -95,6 +102,12 @@ public class ScrollPage : MonoBehaviour {
 				panels [i].transform.position = temppos;
 			}
 			if (currentPanel.transform.position.x > centerX ) {
+				dist = Mathf.Abs (currentPanel.transform.position.x - centerX);
+				for (int i = 0; i < panels.Count; ++i) {
+					temppos = panels [i].transform.position;
+					temppos.x -= dist;
+					panels [i].transform.position = temppos;
+				}
 				snaped = true;
 			}
 		} else {
@@ -118,7 +131,8 @@ public class ScrollPage : MonoBehaviour {
 				if(currentPanel == panels[i]) {
 					currentPanel = panels[i-1];
 					snaped = false;
-					dots.GetComponent<SimpleButtonScrollList>().changeAlphaOnClick(i-1);
+					if(dots != null)
+						dots.GetComponent<SimpleButtonScrollList>().changeAlphaOnClick(i-1);
 					break;
 				}
 			}
@@ -131,7 +145,8 @@ public class ScrollPage : MonoBehaviour {
 				if(currentPanel == panels[i]) {
 					currentPanel = panels[i+1];
 					snaped = false;
-					dots.GetComponent<SimpleButtonScrollList>().changeAlphaOnClick(i+1);
+					if(dots != null)
+						dots.GetComponent<SimpleButtonScrollList>().changeAlphaOnClick(i+1);
 					break;
 				}
 			}
