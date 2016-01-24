@@ -45,7 +45,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TheScript\BulletMovement.cs" />
+     <Compile Include="Assets\TheScript\CSVLoader.cs" />
+     <Compile Include="Assets\TheScript\GameAsset\Bullet.cs" />
+     <Compile Include="Assets\TheScript\GameAsset\Enemy.cs" />
+     <Compile Include="Assets\TheScript\GameAsset\Player.cs" />
+     <Compile Include="Assets\TheScript\LoadSettings.cs" />
      <Compile Include="Assets\TheScript\Menus\Highscore\ChangeHiPage.cs" />
      <Compile Include="Assets\TheScript\Menus\Highscore\HighscoreList.cs" />
      <Compile Include="Assets\TheScript\Menus\Highscore\HighscoreTab.cs" />
@@ -66,13 +70,13 @@
      <Compile Include="Assets\TheScript\Menus\Utiliy\ScrollPage.cs" />
      <Compile Include="Assets\TheScript\Menus\Utiliy\Slider2Text.cs" />
      <Compile Include="Assets\TheScript\Pause.cs" />
-     <Compile Include="Assets\TheScript\Player\Movement.cs" />
-     <Compile Include="Assets\TheScript\Player\Weapon.cs" />
      <Compile Include="Assets\TheScript\PopUpScript.cs" />
-     <Compile Include="Assets\TheScript\ScriptA.cs" />
-     <Compile Include="Assets\TheScript\ScriptB.cs" />
+     <Compile Include="Assets\TheScript\ScaleToCamera.cs" />
+     <Compile Include="Assets\TheScript\SceneManager.cs" />
+     <Compile Include="Assets\TheScript\Score Screen\SceneManager_Score.cs" />
      <Compile Include="Assets\TheScript\StaticVarsNFuns.cs" />
      <Compile Include="Assets\TheScript\VirtualJoystick.cs" />
+     <Compile Include="Assets\TheScript\Weapon.cs" />
      <Compile Include="Assets\TheScript\WeaponWheel.cs" />
      <Compile Include="Assets\TheScript\WorldObject.cs" />
  <Reference Include="UnityEngine.UI">

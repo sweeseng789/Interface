@@ -29,6 +29,7 @@ public class MainMenuEventHandler : MonoBehaviour {
 	float draglen, accel;
 	Vector3 RotateAxis, rotateAroundPos;
 
+	public PopUpScript popUp;
 	// Use this for initialization
 	void Start () {
 		state = states.animation;
@@ -111,8 +112,16 @@ public class MainMenuEventHandler : MonoBehaviour {
 					currentButton.transform.rotation = q;
 				} else {
 					if (isClick) {
-						if(currentButton == SettingButton) {
-							StaticVarsNFuns.GoToSettings();
+						if(currentButton == PlayButton) {
+							StaticVarsNFuns.SGoToModeSelect();
+						} else if(currentButton == SettingButton) {
+							StaticVarsNFuns.SGoToSettings();
+						} else if(currentButton == ShopButton) {
+							StaticVarsNFuns.SGoToShop();
+						} else if(currentButton == ScoreButton) {
+							StaticVarsNFuns.SGoToHighscore();
+						} else if(currentButton == QuitButton) {
+							popUp.launch("Do you wish exit the game?");
 						}
 					}
 					currentButton = null;

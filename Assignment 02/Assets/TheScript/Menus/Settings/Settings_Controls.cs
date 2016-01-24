@@ -19,6 +19,22 @@ public class Settings_Controls : MonoBehaviour {
 			leftSide = rightSide = Attack.transform.position;
 			rightSide = Move.transform.position;
 		}
+
+		if (StaticVarsNFuns.autoAim) {
+			AutoAim.isOn = true;
+		} else {
+			AutoAim.isOn = false;
+		}
+
+		if (StaticVarsNFuns.invertControls) {
+			InvertedControls.isOn = true;
+		} else {
+			InvertedControls.isOn = false;
+		}
+
+		opacity.value = StaticVarsNFuns.opacity;
+
+		updateBoxes ();
 	}
 
 	public void updateBoxes() {
@@ -42,5 +58,13 @@ public class Settings_Controls : MonoBehaviour {
 		Move.GetComponentsInChildren<Image> ()[1].color = tem;
 		Attack.GetComponent<Image>().color = tem;
 		Attack.GetComponentsInChildren<Image> ()[1].color = tem;
+	}
+
+	public void updateValues() {
+		StaticVarsNFuns.autoAim = AutoAim.isOn;
+		
+		StaticVarsNFuns.invertControls = InvertedControls.isOn;
+		
+		StaticVarsNFuns.opacity = opacity.value;
 	}
 }
