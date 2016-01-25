@@ -141,13 +141,13 @@ public class MainMenuEventHandler : MonoBehaviour {
 			if (accel < 0) {
 				if (accel < -3)
 					accel = -3;
-				accel += Time.deltaTime * 10;
+				accel += Time.deltaTime * 30;
 				if (accel > 0)
 					accel = -0.01f;
 			} else {
 				if (accel > 3)
 					accel = 3;
-				accel -= Time.deltaTime * 10;
+				accel -= Time.deltaTime * 30;
 				if (accel < 0)
 					accel = 0.01f;
 			}

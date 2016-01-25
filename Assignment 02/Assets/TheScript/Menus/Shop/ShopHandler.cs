@@ -23,6 +23,7 @@ public class ShopHandler : MonoBehaviour {
 	public PopUpScript buyPopUp;
 
 	public PopUpScript equipPopUp;
+	public List<Button> weapWheelButtons;
 	public List<ShopWeapon> weapWheel;
 	public List<Image> weapWheelImg;
 
@@ -144,16 +145,30 @@ public class ShopHandler : MonoBehaviour {
 	}
 
 	public void showEquipStats (int slot) {
-		
 		WWStatsPanel.SetActive(true);
 		WWWeapName.text = weapWheel [slot].name;
 		WWDamageSlider.value = weapWheel [slot].damage;
 		WWFirerateSlider.value = weapWheel [slot].fireRate;
 		WWClipsizeSlider.value = weapWheel [slot].clipSize;
+
+		Color c;
+		for (int i = 0; i < weapWheelButtons.Count; i++) {
+			if(slot == i) {
+				c = weapWheelButtons[i].image.color;
+				c.a = 1;
+				weapWheelButtons[i].image.color = c;
+			}
+		}
 	}
 
 	public void unShowEquipStats () {
 		WWStatsPanel.SetActive (false);
+		Color c;
+		for (int i = 0; i < weapWheelButtons.Count; i++) {
+			c = weapWheelButtons[i].image.color;
+			c.a = 0.6f;
+			weapWheelButtons[i].image.color = c;
+		}
 	}
 
 	void updateInfo () {

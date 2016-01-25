@@ -17,11 +17,11 @@ public class CSVLoader : MonoBehaviour
         mapData = null;
         mapWidth = mapHeight = mapSize = 0;
 
-        var allResource = Resources.LoadAll("Level");
-        for(int a = 0; a < allResource.Length; ++a)
+        //var allResource = Resources.LoadAll("Level");
+        //for(int a = 0; a < allResource.Length; ++a)
         {
-            Object filenames = allResource[a];
-            levelName.Add(a + 1, filenames.name);
+            //Object filenames = allResource[a];
+            //levelName.Add(a + 1, filenames.name);
         }
     }
 
@@ -59,13 +59,13 @@ public class CSVLoader : MonoBehaviour
     //Read File
     static public void ReadFile(int level)
     {
-        string verify = verifyLevel(level);
+        //string verify = verifyLevel(level);
 
         //Level Does not exist
-        if (verify == "")
-            return;
+        //if (verify == "")
+            //return;
 
-        TextAsset data = Resources.Load("Level/" + verify) as TextAsset;
+        TextAsset data = Resources.Load("Level/1") as TextAsset;
 
         if (mapData != null)
             Start();
