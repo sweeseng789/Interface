@@ -8,11 +8,11 @@ public class CSVLoader : MonoBehaviour
     static string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
     static char[] TRIM_CHARS = { '\"' };
 
-    public static string[,] mapData;
-    public static int mapWidth, mapHeight, mapSize;
-    public static Dictionary<int, string> levelName = new Dictionary<int, string>();
+    public string[,] mapData;
+    public int mapWidth, mapHeight, mapSize;
+    public Dictionary<int, string> levelName = new Dictionary<int, string>();
 
-    static public void Start()
+    public void Start()
     {
         mapData = null;
         mapWidth = mapHeight = mapSize = 0;
@@ -25,7 +25,7 @@ public class CSVLoader : MonoBehaviour
         }
     }
 
-    static public void getWorldSize(string[] width, string[] height)
+    public void getWorldSize(string[] width, string[] height)
     {
         string text = "";
         for (int a = 0; a < width.Length; ++a)
@@ -43,7 +43,7 @@ public class CSVLoader : MonoBehaviour
     }
 
     //Check whether the level exist in the foler
-    static string verifyLevel(int level)
+    string verifyLevel(int level)
     {
         foreach(KeyValuePair<int, string> data in levelName)
         {
@@ -57,7 +57,7 @@ public class CSVLoader : MonoBehaviour
     }
 
     //Read File
-    static public void ReadFile(int level)
+    public void ReadFile(int level)
     {
         //string verify = verifyLevel(level);
 

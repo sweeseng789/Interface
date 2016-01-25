@@ -23,18 +23,19 @@ public class WeaponWheel : MonoBehaviour
     int lastChoice;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-	}
+    }
 
     void OnGUI()
     {
+        // if!Pause.pauseEnabled)
 
         if (!joystick.usingJoystick)
         {
@@ -49,7 +50,7 @@ public class WeaponWheel : MonoBehaviour
 
                 // (new Rect(Screen.width - 540, Screen.height - 630, 350, 350).Contains(mousePos))
                 {
-                    if(new Rect(Screen.width - 485, Screen.height - 630, 240, 180).Contains(mousePos))
+                    if (new Rect(Screen.width - 485, Screen.height - 630, 240, 180).Contains(mousePos))
                     {
                         GUI.DrawTexture(new Rect(Screen.width - 540, Screen.height - 630, 350, 350), textures[1]);
                         textureToShow = textures[1];
@@ -121,8 +122,8 @@ public class WeaponWheel : MonoBehaviour
                 //se
                 {
                     // GUI.DrawTexture(new Rect(Screen.width - 540, Screen.height - 630, 350, 350), textures[0]);
-                   // viewingWeaponWheel = false;
-                   // pause.clickedWeaponWheel(false);
+                    // viewingWeaponWheel = false;
+                    // pause.clickedWeaponWheel(false);
                 }
             }
             else
@@ -136,6 +137,7 @@ public class WeaponWheel : MonoBehaviour
                 }
             }
         }
+
         //else
         {
 

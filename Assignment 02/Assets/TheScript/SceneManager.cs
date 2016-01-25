@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+
 public class SceneManager : MonoBehaviour
 {
     public GameObject[] prefabs = new GameObject[2];
@@ -9,32 +10,33 @@ public class SceneManager : MonoBehaviour
     List<GameObject> worldObj = new List<GameObject>();
 
     public static int enemyCount = 0;
-    int initenemyCount = 0;
+    public int initenemyCount = 0;
+    public CSVLoader csv;
+
     // Use this for initialization
     void Start()
     {
-        CSVLoader.Start();
-        CSVLoader.ReadFile(1);
+        Application.targetFrameRate = 600;
+        csv.ReadFile(1);
 
-        float mapSize = CSVLoader.mapSize;
+        float mapSize = csv.mapSize;
 
-        for (int y = 1; y < CSVLoader.mapHeight; ++y)
+        for (int y = 1; y < csv.mapHeight; ++y)
         {
-            for (int x = 0; x < CSVLoader.mapWidth; ++x)
+            for (int x = 0; x < csv.mapWidth; ++x)
             {
                 GameObject test = Instantiate(background) as GameObject;
                 test.transform.position = new Vector3(x * mapSize, y * mapSize, background.transform.position.z);
             }
         }
 
-
-        for (int y = 1; y < CSVLoader.mapHeight; ++y)
+        for (int y = 1; y < csv.mapHeight; ++y)
         {
-            for(int x = 0; x < CSVLoader.mapWidth; ++x)
+            for (int x = 0; x < csv.mapWidth; ++x)
             {
-                string csvData = CSVLoader.mapData[x, y];
+                string csvData = csv.mapData[x, y];
 
-                if(csvData != "." && csvData != ",")
+                if (csvData != "." && csvData != ",")
                 {
                     Vector3 newPos = new Vector3();
 
@@ -49,8 +51,8 @@ public class SceneManager : MonoBehaviour
                     {
                         GameObject newtree = Instantiate(prefabs[0]) as GameObject;
 
-                        newPos.x = x * CSVLoader.mapSize;
-                        newPos.y = y * CSVLoader.mapSize;
+                        newPos.x = x * mapSize;
+                        newPos.y = y * mapSize;
                         newPos.z = 120;
 
                         newtree.transform.position = newPos;
@@ -61,8 +63,8 @@ public class SceneManager : MonoBehaviour
                     {
                         GameObject newEnemy = Instantiate(prefabs[1]) as GameObject;
 
-                        newPos.x = x * CSVLoader.mapSize;
-                        newPos.y = y * CSVLoader.mapSize;
+                        newPos.x = x * mapSize;
+                        newPos.y = y * mapSize;
                         newPos.z = 120;
 
                         newEnemy.transform.position = newPos;
@@ -72,19 +74,21 @@ public class SceneManager : MonoBehaviour
                         PlayerPrefs.SetInt("EnemyCount", enemyCount);
                     }
                 }
+
             }
         }
     }
 
-    void Update()
+
+    public void Update()
     {
-        if(enemyCount < 0)
+        if (enemyCount <= 0)
         {
             Application.LoadLevel("Score Scene");
             PlayerPrefs.SetString("Win", "true");
             PlayerPrefs.SetInt("EnemyKilled", initenemyCount);
         }
-        else if(player.healthText.text == "0%")
+        else if (player.healthText.text == "0%")
         {
             Application.LoadLevel("Score Scene");
             PlayerPrefs.SetString("Win", "false");
