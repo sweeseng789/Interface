@@ -37,12 +37,13 @@ public class Player : MonoBehaviour
     void Start()
     {
         //Instance the first object to prevent error - Bug
-        GameObject test = Instantiate(bulletPrefab) as GameObject;
-        test.transform.position = transform.position;
+        //GameObject test = Instantiate(bulletPrefab) as GameObject;
+        //test.transform.position = transform.position;
 
         anim = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
-        crosshair.transform.position = new Vector2(0, -15);
+        crosshair.transform.position = new Vector2(0, -20);
+        score = 0;
     }
 
     void Update()
@@ -176,8 +177,8 @@ public class Player : MonoBehaviour
         newBullet.GetComponent<Rigidbody2D>().velocity = currentDir * 100;
 
         Vector3 crosshairOffset = gameObject.transform.position;
-        crosshairOffset.x += currentDir.x * 15;
-        crosshairOffset.y += currentDir.y * 15;
+        crosshairOffset.x += currentDir.x * 20;
+        crosshairOffset.y += currentDir.y * 20;
         crosshair.transform.position = new Vector3(crosshairOffset.x, crosshairOffset.y, crosshair.gameObject.transform.position.z);
     }
 

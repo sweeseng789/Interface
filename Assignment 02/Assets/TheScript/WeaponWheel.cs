@@ -26,17 +26,19 @@ public class WeaponWheel : MonoBehaviour
 
     void OnGUI()
     {
-        // if!Pause.pauseEnabled)
-
-        if (!joystick.usingJoystick)
+        if(!Pause.pauseEnabled)
         {
-            if (viewingWeaponWheel)
+
+            if (!joystick.usingJoystick)
             {
-                RenderWeaponWheel_Screen();
-            }
-            else
-            {
-                RenderWeaponWheel_Icon();
+                if (viewingWeaponWheel)
+                {
+                    RenderWeaponWheel_Screen();
+                }
+                else
+                {
+                    RenderWeaponWheel_Icon();
+                }
             }
         }
     }

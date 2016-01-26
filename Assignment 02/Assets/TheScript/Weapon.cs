@@ -14,6 +14,7 @@ public class Weapon : MonoBehaviour
 {
     public static WEPAONCHOICE choice = WEPAONCHOICE.s_PISTOL;
     public static int ammoCount = 15;
+    AudioSource audio;
 
     public GameObject pistol;
     public GameObject melee;
@@ -21,6 +22,18 @@ public class Weapon : MonoBehaviour
     public GameObject sniper;
 
     public Text AmmoCountText;
+
+    void Start()
+    {
+        audio = GetComponent<AudioSource>();
+        if(audio == null)
+        {
+            Debug.Log("Hello World");
+        }
+        audio.Pause();
+
+        ammoCount = 15;
+    }
 
     public static void setToPistol()
     {
@@ -45,7 +58,10 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         if (ammoCount < 1)
+        {
+            audio.Play();
             ammoCount = 15;
+        }
 
         AmmoCountText.text = ammoCount.ToString();
 
