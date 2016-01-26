@@ -37,9 +37,9 @@ public class HighscoreList : MonoBehaviour {
 			Tab.score.text = item.score;
 			if(item.isPlayer) {
 				newButton.GetComponentsInChildren<Image> ()[0].color = new Color(0, 0.9568f, 1, 1);
-				newButton.GetComponentsInChildren<Image> ()[1].color = new Color(0, 0.9568f, 1, 1);
-				newButton.GetComponentsInChildren<Image> ()[3].color = new Color(0, 0.9568f, 1, 1);
+				newButton.GetComponentsInChildren<Image> ()[2].color = new Color(0, 0.9568f, 1, 1);
 				newButton.GetComponentsInChildren<Image> ()[4].color = new Color(0, 0.9568f, 1, 1);
+				newButton.GetComponentsInChildren<Image> ()[5].color = new Color(0, 0.9568f, 1, 1);
 
 				PlayerScore.GetComponentsInChildren<Text>()[0].text = item.positon;
 				PlayerScore.GetComponentsInChildren<Text>()[1].text = item.name;
