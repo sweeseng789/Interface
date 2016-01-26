@@ -111,19 +111,6 @@ public class MainMenuEventHandler : MonoBehaviour {
 					currentButton.transform.RotateAround (rotateAroundPos, RotateAxis, -0.01f);
 					currentButton.transform.rotation = q;
 				} else {
-					if (isClick) {
-						if(currentButton == PlayButton) {
-							StaticVarsNFuns.SGoToModeSelect();
-						} else if(currentButton == SettingButton) {
-							StaticVarsNFuns.SGoToSettings();
-						} else if(currentButton == ShopButton) {
-							StaticVarsNFuns.SGoToShop();
-						} else if(currentButton == ScoreButton) {
-							StaticVarsNFuns.SGoToHighscore();
-						} else if(currentButton == QuitButton) {
-							popUp.launch("Do you wish exit the game?");
-						}
-					}
 					currentButton = null;
 					isClick = false;
 				}
@@ -220,6 +207,17 @@ public class MainMenuEventHandler : MonoBehaviour {
 	}
 
 	public void buttonOnClick (Button GO){
+			if (CurrentButtonText.text == "Play" && GO == PlayButton) {
+				StaticVarsNFuns.SGoToModeSelect ();
+			} else if (CurrentButtonText.text == "Settings" && GO == SettingButton) {
+				StaticVarsNFuns.SGoToSettings ();
+			} else if (CurrentButtonText.text == "Shop" && GO == ShopButton) {
+				StaticVarsNFuns.SGoToShop ();
+			} else if (CurrentButtonText.text == "Highscore" && GO == ScoreButton) {
+				StaticVarsNFuns.SGoToHighscore ();
+			} else if (CurrentButtonText.text == "Quit" && GO == QuitButton) {
+				popUp.launch ("Do you wish exit the game?");
+			}
 		if (!isDrag) {
 			currentButton = GO;
 			isClick = true;
