@@ -26,19 +26,17 @@ public class WeaponWheel : MonoBehaviour
 
     void OnGUI()
     {
-        if(!Pause.pauseEnabled)
-        {
+        // if!Pause.pauseEnabled)
 
-            if (!joystick.usingJoystick)
+        if (!joystick.usingJoystick)
+        {
+            if (viewingWeaponWheel)
             {
-                if (viewingWeaponWheel)
-                {
-                    RenderWeaponWheel_Screen();
-                }
-                else
-                {
-                    RenderWeaponWheel_Icon();
-                }
+                RenderWeaponWheel_Screen();
+            }
+            else
+            {
+                RenderWeaponWheel_Icon();
             }
         }
     }
@@ -86,13 +84,13 @@ public class WeaponWheel : MonoBehaviour
 
     void RenderWeaponWheel_Screen()
     {
-        if(touchID != -1)
+        if (touchID != -1)
         {
             Touch touch = Input.GetTouch(touchID);
             Vector2 fingerPos = touch.position;
             fingerPos.y = Screen.height - touch.position.y;
 
-            if(touch.phase != TouchPhase.Ended)
+            if (touch.phase != TouchPhase.Ended)
             {
                 Texture2D textureToShow = textures[0];
                 GUI.DrawTexture(new Rect(Screen.width - 540, Screen.height - 630, 350, 350), textures[0]);
