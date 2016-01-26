@@ -36,14 +36,14 @@ public class HighscoreList : MonoBehaviour {
 			Tab.name.text = item.name;
 			Tab.score.text = item.score;
 			if(item.isPlayer) {
-				newButton.GetComponentsInChildren<Image> ()[0].color = new Color(0, 0.9568f, 1, 1);
+				/*newButton.GetComponentsInChildren<Image> ()[0].color = new Color(0, 0.9568f, 1, 1);
 				newButton.GetComponentsInChildren<Image> ()[2].color = new Color(0, 0.9568f, 1, 1);
-				newButton.GetComponentsInChildren<Image> ()[4].color = new Color(0, 0.9568f, 1, 1);
-				newButton.GetComponentsInChildren<Image> ()[5].color = new Color(0, 0.9568f, 1, 1);
+				newButton.GetComponentsInChildren<Image> ()[4].color = new Color(0, 0.9568f, 1, 1);*/
+				newButton.GetComponentsInChildren<Image> ()[2].enabled = true;
 
 				PlayerScore.GetComponentsInChildren<Text>()[0].text = item.positon;
-				PlayerScore.GetComponentsInChildren<Text>()[1].text = item.name;
-				PlayerScore.GetComponentsInChildren<Text>()[2].text = item.score;
+				PlayerScore.GetComponentsInChildren<Text>()[1].text = item.score;
+				PlayerScore.GetComponentsInChildren<Text>()[2].text = item.name;
 			}
 			newButton.transform.SetParent (contentPanel);
 			newButton.GetComponent<RectTransform>().localScale = new Vector3(1f,1f,1f);
